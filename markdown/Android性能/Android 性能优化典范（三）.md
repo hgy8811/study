@@ -1,0 +1,2 @@
+
+更高效的 ArrayMap 容器，使用 Android 系统提供的特殊容器来避免自动装箱，避免使用枚举类型，注意onLowMemory与onTrimMemory的回调，避免内存泄漏，高效的位置更新操作，重复 layout 操作的性能影响，以及使用 Batching，Prefetching 优化网络请求，压缩传输数据等使用技巧。
