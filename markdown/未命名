@@ -1,0 +1,5 @@
+ViewRootImpl
+
+IWindow
+
+Window - PhoneWindow - > DecorView - > setContentView  ->

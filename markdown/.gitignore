@@ -1,0 +1,26 @@
+# android
+/gen
+/bin
+/proguard/
+
+build/
+.idea/
+
+# git
+*.orig
+*.pdf
+
+# editors
+*.swp
+*~
+
+# mac
+.DS_Store
+/release/
+/tests/
+/src/com/kugou/android/opt
+
+
+# intellij
+*.iml
+
