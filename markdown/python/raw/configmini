@@ -1,0 +1,11 @@
+{
+"listen.switchparam.bootsplash": "1",
+"common.switch.carrierktv": "1",
+"common.switch.carriershow": "1",
+"listen.admodule.index_ad_rotation_conf": "{\"fxfollow\":{\"l\":1,\"m\":3,\"n\":0,\"i\":5},\"contact\":{\"l\":2,\"m\":1,\"n\":0,\"i\":5},\"recommend\":{\"l\":3,\"m\":2,\"n\":0,\"i\":5},\"game\":{\"l\":4,\"m\":1,\"n\":0,\"i\":5},\"ad\":{\"l\":5,\"m\":5,\"n\":0,\"i\":5}}",
+"listen.admodule.index_ad_max_rotation": "5",
+"listen.switchparam.nav_advertise_entry": "1",
+"listen.sampleparam.behavior": "100",
+"listen.sampleparam.behaviorcycle": "300",
+"sinceid": "14544"
+}
