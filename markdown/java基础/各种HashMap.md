@@ -1,0 +1,20 @@
+# ConcurrentHashMap的实现原理和源码分析
+
+http://liuwangshu.cn/java/concurrent/5-concurrenthashmap.html
+
+## 为何用ConcurrentHashMap
+
+在并发编程中使用HashMap可能会导致死循环，而使用线程安全的HashTable效率又低下。
+
+1. 线程不安全的HashMap
+
+在多线程环境下，使用HashMap进行put操作会引起死循环，导致CPU利用率接近100%，所以在并发情况下不能使用HashMap.
+...
+
+2. 效率低下的HashTable
+
+HashTable使用synchronized来保证线程的安全，但是在线程竞争激烈的情况下HashTable的效率非常低下。当一个线程访问HashTable的同步方法，其他方法访问HashTable的同步方法时，会进入阻塞或者轮询状态。如果线程1使用put进行元素添加，线程2不但不能用put方法添加于元素同是也无法用get方法来获取元素，所以竞争越激烈效率越低。
+
+3. ConcurrentHashMap的锁分段技术
+
+HashTable容器在竞争激烈的并发环境效率低下的原因是所有访问HashTable的线程都必须竞争同一把锁，假如容器有多把锁，每一把锁用于锁住容器中一部分数据，那么多线程访问容器里不同数据段的数据时，线程间就不会存在锁竞争，从而可以有效提高并发访问率，这就是ConcurrentHashMap的锁分段技术。将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一段数据的时候，其他段的数据也能被其他线程访问。

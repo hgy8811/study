@@ -89,6 +89,7 @@ if __name__ == '__main__' :
     miniConfStr = "{";
     miniKeys = miniKeysStr.split('\n')
     for key in miniKeys :
+        print "key:" + key
         value = str(confdict[key]);
         value = value.replace('\"', '\\"')
         item = '\n"' + key + '"' + ': ' + '"' + value + '",'

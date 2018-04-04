@@ -5,3 +5,6 @@ Tips：最常见的synchronized关键字实际上是依靠对象锁的机制来�
 
 
 http://www.blogjava.net/zhangwei217245/archive/2010/04/24/315526.html
+
+
+线程上下文的切换和调度

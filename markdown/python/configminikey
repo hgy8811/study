@@ -6,4 +6,5 @@ listen.admodule.index_ad_max_rotation
 listen.switchparam.nav_advertise_entry
 listen.sampleparam.behavior
 listen.sampleparam.behaviorcycle
+listen.switchparam.rt_req_splash
 sinceid

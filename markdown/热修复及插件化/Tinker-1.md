@@ -18,5 +18,13 @@ Andfix 的好处是可以立刻生效，但它可以支持的补丁场景非常�
 
 这个方案使用 classloader 的方式，能实现更加友好的类替换。而且这与我们加载 Multidex 的做法相似，能基本保证稳定性与兼容性。
 它主要的面临问题有两个:
-*  为了解决 unexpected DEX problem 异常，而采用插桩的方式给所有类插入不会真正运行的代码，防止类打上 preverify 标志。
-   采用插桩导致所有类都非 preverify，导致 verify 与 optimize 操作会在加载类时触发。这会有一定的性能损耗.
+* 为了解决 unexpected DEX problem 异常，而采用插桩的方式给所有类插入不会真正运行的代码，防止类打上 preverify 标志。
+  采用插桩导致所有类都非 preverify，导致 verify 与 optimize 操作会在加载类时触发。这会有一定的性能损耗.
+
+* 在 art 平台，若补丁中的类出现 Field、Method 或 Interface 变化，可能会导致出现内存地址错乱的问题。为了解决这个问题，我们最后补丁中的类要有 以下规则：
+  a. 修改跟新增的 class；
+  b. 若 class 有 field，method 或 interface 数量变化，它们所有的子类；
+  c. 若 class 有 field，method 或 interface 数量变化，它们以及它们所有子类的调用类。如果采用 ClassN 方式，即需要多个 dex 一起处理。
+
+Qzone 的方案最为简单，而且开发透明，补丁的成功率也是非常高的。
+但由于微信对于运行性能以及补丁大小 都比较敏感，我们最终也没有采用这套方案。

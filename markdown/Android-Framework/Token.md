@@ -1,0 +1,13 @@
+# 深入理解Activity - Token
+
+Token是ActivityRecord的内部静态类，我们先来看下Token的继承关系，Token extends IApplicationToken.Stub，从IApplicationToken.Stub类进行继承，根据Binder的机制可以知道Token是一个匿名Binder实体类，这个匿名Binder实体会传递给其他进程，其他进程会拿到Token的代理端。
+我们知道匿名Binder有两个比较重要的用途，一个是拿到Binder代理端后可跨Binder调用实体端的函数接口，另一个作用便是在多个进程中标识同一个对象。往往这两个作用是同时存在的，比如我们这里研究的Token就同时存在这两个作用，但最重要的便是后者，Token标识了一个ActivityRecord对象，即间接标识了一个Activity。
+
+## Token创建
+第一次启动一个Activity时，在AMS中首先会创建一个ActivityRecord记录，构造函数理便会创建一个Token对象保存在ActivityRecord.appToken zhong
+
+## 传递至WMS
+调用WMS的addAppToken()接口在WMS中创建一个AppWindowToken对象，Token对象传递并保存在AppWindowToken.appToken中。
+
+## 传递至ActivityThread
+待Activity所在的进程启动后，AMS便会跨Binder调用scheduleLaunchActivity接口，Token代理对象便会保存在ActivityClientRecord.token中
