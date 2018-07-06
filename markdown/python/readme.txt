@@ -4,4 +4,7 @@
 
 tips: 文件头 #!/usr/local/bin
 
-我的命令： python2 config.py "version=8950&&channel=201"
+我的命令： python2 config.py "version=8948&&channel=201"
+
+python2 learn.py "version=8948&&channel=201"
+python3 config.py "version=8948&&channel=201"
