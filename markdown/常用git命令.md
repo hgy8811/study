@@ -10,6 +10,5 @@ git log --merges
 
  git log --pretty=oneline --author="xxxx"
 
-
 exp:
 git log --no-merges --pretty=oneline --author="xxx"
